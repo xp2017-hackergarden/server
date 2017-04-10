@@ -3,3 +3,7 @@ db.sqlite3
 .idea/
 __pycache__/
 .cache
+staticfiles/
+.DS_Store
+*.pyc
+.floo

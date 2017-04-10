@@ -25,15 +25,18 @@ class Common(Configuration):
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.messages',
+        'whitenoise.runserver_nostatic',
         'django.contrib.staticfiles',
         'django_extensions',
         'waffle',
         'xpserver_api',
-        'xpserver_web'
+        'xpserver_web',
+        'static_precompiler',
     ]
 
     MIDDLEWARE_CLASSES = [
         'django.middleware.security.SecurityMiddleware',
+        'whitenoise.middleware.WhiteNoiseMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
@@ -125,6 +128,12 @@ class Common(Configuration):
 
     STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'static'),
+    )
+
+    STATIC_FILEFINDERS = (
+        'django.contrib.staticfiles.finders.FileSystemFinders',
+        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+        'static_precompiler.finders.StaticPrecompilerFinder',
     )
 
     STATICFILE_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'

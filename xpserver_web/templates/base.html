@@ -1,9 +1,16 @@
+{% load compile_static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Hello World</title>
+      <title>Hello World</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="{% static "less/bootstrap.less"|compile %}">
   </head>
   <body>
-  {{ greeting }}
+  <div class="container">
+      <h1>{{ greeting }}</h1>
+      <button class="btn-primary">Help</button>
+  </div>
   </body>
 </html>
