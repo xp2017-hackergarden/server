@@ -1,9 +1,25 @@
+{% load compile_static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Hello World</title>
+      <title>Hello World</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="{% static "less/bootstrap.less"|compile %}">
+      <link rel="stylesheet" href="{% static 'css/app.css' %}">
   </head>
   <body>
-  {{ greeting }}
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+            <div class="navbar-header">
+                <div class="col-md-5 base-header">
+                    <img src="{% static 'images/xp-logo.png' %}" class="img-responsive" >
+                </div>
+            </div>
+    </div>
+
+
+</div>
+
   </body>
 </html>
