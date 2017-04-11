@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "less": "^2.7.2"
+    "less": "2.7.2"
   }
 }
