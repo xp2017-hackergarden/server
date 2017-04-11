@@ -11,11 +11,11 @@ pytest-env==0.6.0
 pytest-mock==1.6.0
 pytest-webdriver==1.2.10
 unittest2py3k==0.5.1
-whitenoise==3.2
+whitenoise==3.3.0
 django-configurations==1.0.0
 django-dotenv==1.4.1
 django-extensions==1.7.2
 django-waffle==0.11.1
 newrelic==2.74.0.54
 selenium==3.0.1
-django-static-precompiler==1.5
+django-pipeline==1.6.12

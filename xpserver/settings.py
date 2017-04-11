@@ -31,7 +31,7 @@ class Common(Configuration):
         'waffle',
         'xpserver_api',
         'xpserver_web',
-        'static_precompiler',
+        'pipeline',
     ]
 
     MIDDLEWARE_CLASSES = [
@@ -133,12 +133,26 @@ class Common(Configuration):
     STATIC_FILEFINDERS = (
         'django.contrib.staticfiles.finders.FileSystemFinders',
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-        'static_precompiler.finders.StaticPrecompilerFinder',
+        'pipeline.finders.PipelineFinder',
     )
 
-    STATICFILE_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+    STATICFILE_STORAGE = 'xpserver.storage.WhiteNoisePipelineStorage'
 
-    WHITENOISE_USE_FINDERS = True
+    PIPELINE = {
+        'PIPELINE_ENABLED': True,
+        'STYLESHEETS': {
+            'bootstrap': {
+                'source_filenames': (
+                    'assets/less/bootstrap.less',
+                ),
+                'output_filename': 'css/bootstrap.css',
+            }
+        },
+        'COMPILERS': (
+            'pipeline.compilers.less.LessCompiler',
+        ),
+    }
+
 
 
 class Development(Common):
