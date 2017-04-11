@@ -3,5 +3,5 @@ from whitenoise.storage import CompressedStaticFilesMixin
 from pipeline.storage import PipelineMixin
 
 
-class WhiteNoisePipelineStorage(CompressedStaticFilesMixin, PipelineMixin, ManifestFilesMixin):
+class WhiteNoisePipelineStorage(PipelineMixin, CompressedStaticFilesMixin, ManifestFilesMixin):
     pass
