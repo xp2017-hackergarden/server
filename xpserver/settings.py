@@ -138,6 +138,8 @@ class Common(Configuration):
 
     STATICFILE_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
+    WHITENOISE_USE_FINDERS = True
+
 
 class Development(Common):
     DEBUG = True
