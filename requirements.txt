@@ -5,11 +5,11 @@ gunicorn==19.6.0
 Markdown==2.6.6
 psycopg2==2.6.1
 py==1.4.31
-pytest==2.9.2
-pytest-django==2.9.1
+pytest==3.0.7
+pytest-django==3.1.2
 pytest-env==0.6.0
-pytest-mock==1.1
-pytest-webdriver==1.2.2
+pytest-mock==1.6.0
+pytest-webdriver==1.2.10
 unittest2py3k==0.5.1
 whitenoise==3.2
 django-configurations==1.0.0
