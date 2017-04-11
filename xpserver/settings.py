@@ -148,10 +148,12 @@ class Common(Configuration):
                 'output_filename': 'css/bootstrap.css',
             }
         },
-        'COMPILERS': (
-            'pipeline.compilers.less.LessCompiler',
-        ),
+        'CSS_COMPRESSOR': None,
     }
+
+    PIPELINE['COMPILERS'] = (
+        'pipeline.compilers.less.LessCompiler',
+    )
 
 
 
