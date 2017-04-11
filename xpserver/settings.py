@@ -136,7 +136,8 @@ class Common(Configuration):
         'pipeline.finders.PipelineFinder',
     )
 
-    STATICFILE_STORAGE = 'xpserver.storage.WhiteNoisePipelineStorage'
+    # STATICFILE_STORAGE = 'xpserver.storage.WhiteNoisePipelineStorage'
+    STATICFILE_STORAGE = 'pipeline.storage.PipelineStorage'
 
     PIPELINE = {
         'PIPELINE_ENABLED': True,
