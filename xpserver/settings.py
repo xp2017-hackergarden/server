@@ -143,7 +143,7 @@ class Common(Configuration):
         'STYLESHEETS': {
             'bootstrap': {
                 'source_filenames': (
-                    'assets/less/bootstrap.less',
+                    'less/bootstrap.less',
                 ),
                 'output_filename': 'css/bootstrap.css',
             }
