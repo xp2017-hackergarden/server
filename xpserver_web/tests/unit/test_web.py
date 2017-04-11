@@ -7,6 +7,7 @@ def test_root_resolves_to_hello_world():
     found = resolve('/web/')
     assert found.func == hello_world
 
+@pytest.mark.django_db
 def test_hello_world_contains_greeting(client):
     response = client.get('/web/')
     assert response.context['greeting'] == 'hello world'
