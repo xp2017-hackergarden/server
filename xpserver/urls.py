@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
+from django.contrib.auth.views import logout_then_login
 
 urlpatterns = [
+    url(r'^', include('xpserver_web.urls')),
+    url(r'^accounts/login/$', auth_views.login, name='login'),
+    url('^accounts/logout/$', lambda request: logout_then_login(request, "/"), name='logout'),
     url(r'^admin/', admin.site.urls),
-    url(r'^web/', include('xpserver_web.urls')),
     url(r'^api/', include('xpserver_api.urls'))
-    ]
+]

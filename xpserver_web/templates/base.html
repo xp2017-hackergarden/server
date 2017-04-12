@@ -2,24 +2,38 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-      <title>Hello World</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="{% static 'css/app.css' %}">
-      {% stylesheet 'bootstrap' %}
-  </head>
-  <body>
+<head>
+    <title>Hello World</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    {% stylesheet 'bootstrap' %}
+</head>
+<body>
 <div class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
+
+    <div class="row vertical-align">
+        <div class="container">
             <div class="navbar-header">
                 <div class="col-md-5 base-header">
-                    <img src="{% static 'images/xp-logo.png' %}" class="img-responsive" >
+                    <img src="{% static 'images/xp-logo.png' %}" class="img-responsive">
                 </div>
             </div>
+        </div>
+
+        {% if user.is_authenticated %}
+            <div class="logout">
+                <a href='{% url 'logout' %}'>
+                    <span class="glyphicon glyphicon-log-out"></span> Log out
+                </a>
+            </div>
+        {% endif %}
+
     </div>
-
-
 </div>
 
-  </body>
+<div class="col-md-8 base-block-content">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
 </html>
