@@ -4,8 +4,12 @@ from django.contrib.auth.decorators import login_required
 
 
 @login_required
-def hello_world(request):
-    return render(request, 'base.html', {'greeting': 'hello world'})
+def main(request):
+    return render(request, 'base.html')
+
+
+def register(request):
+    return render(request, 'registration/registration.html')
 
 
 def ping(request):
