@@ -5,5 +5,5 @@ from xpserver_web import views
 urlpatterns = [
     url(r'^ping$', views.ping),
     url(r'^$', views.main),
-    url(r'^/register$', views.register)
+    url(r'^register/$', views.register, name='register')
 ]

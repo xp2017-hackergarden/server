@@ -1,92 +1,75 @@
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
 }
-
 input:focus {
   outline: none;
 }
-
 .base-header {
   padding-left: 5px;
   padding-right: 0px;
   padding-top: 5px;
 }
-
 .navbar-logo {
   width: 40%;
 }
-
 @media only screen and (min-width: 768px) {
   .navbar-logo {
     width: 80%;
   }
 }
-
 .base-block-content {
   padding-top: 150px;
 }
-
 @media only screen and (min-width: 992px) {
   .base-block-content {
     padding-top: 60px;
   }
 }
-
 .vertical-align {
   display: flex;
   flex: 1;
   align-items: center;
   justify-content: flex-start;
 }
-
 .login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  h2 {
-    margin: 25px 0;
-  }
-
-  label {
-    display: block;
-  }
-
-  input {
-    padding: 5px;
-    width: 100%;
-  }
-
-  @media only screen and (min-width: 992px) {
-    input {
-      width: 250px;
-    }
+}
+.login-form h2 {
+  margin: 25px 0;
+}
+.login-form label {
+  display: block;
+}
+.login-form input {
+  padding: 5px;
+  width: 100%;
+}
+@media only screen and (min-width: 992px) {
+  .login-form input {
+    width: 250px;
   }
 }
-
 .register-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  h2 {
-    margin: 25px 0;
+}
+.register-form h2 {
+  margin: 25px 0;
+}
+.register-form label {
+  display: block;
+}
+.register-form input {
+  padding: 5px;
+  width: 100%;
+}
+@media only screen and (min-width: 992px) {
+  .register-form input {
+    width: 250px;
   }
-
-  label {
-    display: block;
-  }
-
-  input {
-    padding: 5px;
-    width: 100%;
-  }
-
-  @media only screen and (min-width: 992px) {
-    input {
-      width: 250px;
-    }
-  }
-
 }
