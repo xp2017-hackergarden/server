@@ -21,6 +21,7 @@ def register(request):
         if registration_form.is_valid():
             user = registration_form.save(commit=False)
             user.username = user.email
+            user.is_active = False
             # TODO Implement activation via email here.
             user.save()
             return redirect("/")
