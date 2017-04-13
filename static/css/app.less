@@ -79,3 +79,29 @@ input:focus {
         }
     }
 }
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    margin: 25px 0;
+  }
+
+  label {
+    display: block;
+  }
+
+  input {
+    padding: 5px;
+    width: 100%;
+  }
+
+  @media only screen and (min-width: 992px) {
+    input {
+      width: 250px;
+    }
+  }
+
+}
