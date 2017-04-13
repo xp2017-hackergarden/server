@@ -21,11 +21,13 @@
             </div>
             <div class="col-sm-9">
                 {% if user.is_authenticated %}
-                    <div class="logout">
-                        <a href='{% url 'logout' %}'>
-                            <span class="glyphicon glyphicon-log-out"></span> Log out
-                        </a>
-                    </div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href='{% url 'logout' %}'>
+                                <span class="glyphicon glyphicon-log-out"></span> Log out
+                            </a>
+                        </li>
+                    </ul>
                 {% endif %}
             </div>
         </div>
