@@ -21,7 +21,7 @@ from django.contrib.auth.views import logout_then_login
 urlpatterns = [
     url(r'^', include('xpserver_web.urls')),
     url(r'^accounts/login/$', auth_views.login, name='login'),
-    url('^accounts/logout/$', lambda request: logout_then_login(request, "/"), name='logout'),
+    url(r'^accounts/logout/$', lambda request: logout_then_login(request, "/"), name='logout'),
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('xpserver_api.urls'))
 ]
