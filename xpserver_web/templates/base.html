@@ -5,8 +5,8 @@
 <head>
     <title>Hello World</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{% static 'css/app.css' %}">
     {% stylesheet 'bootstrap' %}
+    {% stylesheet 'app' %}
 </head>
 <body>
 <div class="navbar navbar-default navbar-fixed-top">
@@ -17,17 +17,28 @@
                     <a class="navbar-brand">
                         <img src="{% static 'images/xp-logo.png' %}" class="navbar-logo">
                     </a>
+                    {% if user.is_authenticated %}
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navbar-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    {% endif %}
                 </div>
             </div>
             <div class="col-sm-9">
                 {% if user.is_authenticated %}
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href='{% url 'logout' %}'>
-                                <span class="glyphicon glyphicon-log-out"></span> Log out
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="collapse navbar-collapse" id="navbar-1" aria-expanded="false" style="height: 1px">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href='{% url 'logout' %}'>
+                                    <span class="glyphicon glyphicon-log-out"></span> Log out
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 {% endif %}
             </div>
         </div>
@@ -38,5 +49,6 @@
     {% block content %}
     {% endblock %}
 </div>
+{% javascript 'app' %}
 </body>
 </html>

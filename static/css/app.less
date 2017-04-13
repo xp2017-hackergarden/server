@@ -13,13 +13,28 @@ input:focus {
     padding-top: 5px;
 }
 
+.navbar-brand {
+    padding-top: 10px;
+    width: 200px;
+}
+
 .navbar-logo {
+    transition: all 0.5s;
     width: 40%;
 }
 
 @media only screen and (min-width: 768px) {
     .navbar-logo {
         width: 80%;
+    }
+}
+
+.navbar-default .navbar-nav > li > a {
+    font-size: 18px;
+    color: #231f20;
+
+    &:hover {
+        color: #fff;
     }
 }
 

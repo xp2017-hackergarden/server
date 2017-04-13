@@ -147,7 +147,7 @@ class Common(Configuration):
                 ),
                 'output_filename': 'css/bootstrap.css',
             },
-            'other': {
+            'app': {
                 'source_filenames': (
                     'css/app.less',
                 ),
@@ -155,6 +155,18 @@ class Common(Configuration):
             }
         },
         'CSS_COMPRESSOR': None,
+        'JS_COMPRESSOR': None,
+        'JAVASCRIPT': {
+            'app': {
+                'source_filenames': (
+                    'admin/js/vendor/jquery/jquery.js',
+                    'js/collapse.js',
+                    'js/dropdown.js',
+                    'js/transition.js',
+                ),
+                'output_filename': 'js/app.js',
+            },
+        },
     }
 
     PIPELINE['COMPILERS'] = (
