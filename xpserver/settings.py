@@ -146,6 +146,12 @@ class Common(Configuration):
                     'less/bootstrap.less',
                 ),
                 'output_filename': 'css/bootstrap.css',
+            },
+            'other': {
+                'source_filenames': (
+                    'css/app.less',
+                ),
+                'output_filename': 'css/app.css',
             }
         },
         'CSS_COMPRESSOR': None,
