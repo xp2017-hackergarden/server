@@ -6,6 +6,7 @@ from django.shortcuts import redirect
 from .forms import RegisterForm
 from xpserver_web.models import Profile
 from xpserver_api.services import generate_activation_code, EmailSender
+from django.contrib import messages
 
 
 @login_required
@@ -29,6 +30,8 @@ def register(request):
             profile.save()
             email_sender = EmailSender()
             email_sender.send_activation_email_with(profile=profile)
+            messages.add_message(request, messages.INFO,
+                                 'Successfully registered. Please check your email for validation link.')
             return redirect("/")
         else:
             return render(request, 'registration/register.html', {'registration_form': registration_form})
