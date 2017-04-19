@@ -10,6 +10,7 @@ pytest-django==3.1.2
 pytest-env==0.6.0
 pytest-mock==1.6.0
 pytest-webdriver==1.2.10
+sendgrid==4.0.0
 unittest2py3k==0.5.1
 whitenoise==3.3.0
 django-configurations==1.0.0

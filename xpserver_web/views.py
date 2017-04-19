@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from .forms import RegisterForm
+from xpserver_web.models import Profile
+from xpserver_api.services import generate_activation_code, EmailSender
 
 
 @login_required
@@ -22,8 +24,11 @@ def register(request):
             user = registration_form.save(commit=False)
             user.username = user.email
             user.is_active = False
-            # TODO Implement activation via email here.
             user.save()
+            profile = Profile.objects.create(user=user, activation_code=generate_activation_code())
+            profile.save()
+            email_sender = EmailSender()
+            email_sender.send_activation_email_with(profile=profile)
             return redirect("/")
         else:
             return render(request, 'registration/register.html', {'registration_form': registration_form})
