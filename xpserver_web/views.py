@@ -30,7 +30,7 @@ def register(request):
             profile.save()
             email_sender = EmailSender()
             email_sender.send_activation_email_with(profile=profile)
-            messages.add_message(request, messages.INFO,
+            messages.add_message(request, messages.SUCCESS,
                                  'Successfully registered. Please check your email for validation link.')
             return redirect("/")
         else:

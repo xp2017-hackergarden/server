@@ -52,9 +52,11 @@
 </div>
 <div class="container base-block-content">
     {% if messages %}
-        <ul class="messages">
+        <ul class="list-unstyled">
             {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                <li{% if message.tags %} class="alert-{{ message.tags }}"{% endif %}>
+                    <div{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
+                </li>
             {% endfor %}
         </ul>
     {% endif %}
