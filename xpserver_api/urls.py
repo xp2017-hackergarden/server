@@ -8,6 +8,7 @@ router.register(r'users', UserViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^activate_account/$', views.activate_account, name='activate')
 
 ]
