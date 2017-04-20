@@ -34,6 +34,7 @@ class Common(Configuration):
         'xpserver_web',
         'pipeline',
         'rest_framework',
+        'rest_framework.authtoken',
     ]
 
     REST_FRAMEWORK = {
