@@ -7,6 +7,12 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         model = User
         fields = ('url', 'email')
 
+    def create(self, validated_data):
+        user = User.objects.create(**validated_data)
+        user.username = validated_data['email']
+        user.save()
+        return user
+
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
