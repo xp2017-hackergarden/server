@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers, viewsets
+from xpserver_api.permissions import IsCreationOrIsAuthenticated
 from xpserver_api.services import generate_activation_code, EmailSender
 from xpserver_web.models import Profile
 
@@ -25,3 +26,4 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = [IsCreationOrIsAuthenticated]
