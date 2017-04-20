@@ -1,12 +1,14 @@
+from django.core import exceptions
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib.auth import password_validation
+from django.contrib import messages
 from django.shortcuts import redirect
 from .forms import RegisterForm
 from xpserver_web.models import Profile
 from xpserver_api.services import generate_activation_code, EmailSender
-from django.contrib import messages
 
 
 @login_required
@@ -39,6 +41,36 @@ def register(request):
     elif request.method == "GET":
         registration_form = RegisterForm()
         return render(request, 'registration/register.html', {'registration_form': registration_form})
+
+
+@login_required
+def change_password(request):
+    if request.method == "POST":
+        password = request.POST.get('password')
+        repeated = request.POST.get('repeated_password')
+        errors = dict()
+        if password != repeated:
+            messages.add_message(request, messages.ERROR,
+                                 "You didn't repeat password correctly.")
+            return render(request, 'registration/changePassword.html',
+                          {'password': password, 'repeated_password': repeated})
+        else:
+            try:
+                password_validation.validate_password(password)
+            except exceptions.ValidationError as e:
+                errors['password'] = list(e.messages)
+                for error in errors['password']:
+                    messages.add_message(request, messages.ERROR, error)
+                return render(request, 'registration/changePassword.html',
+                              {'password': password, 'repeated_password': repeated})
+            u = User.objects.get(id=request.user.id)
+            u.set_password(password)
+            u.save()
+            messages.add_message(request, messages.SUCCESS,
+                                 'Successfully changed password.')
+            return redirect("/")
+    elif request.method == "GET":
+        return render(request, 'registration/changePassword.html')
 
 
 def ping(request):

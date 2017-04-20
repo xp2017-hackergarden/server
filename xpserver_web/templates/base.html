@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}"/>
-    <title>XP 2017</title>
+    <title>XP 2017 - {% block title %}Home page{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% stylesheet 'bootstrap' %}
     {% stylesheet 'app' %}
@@ -30,17 +30,38 @@
                 </div>
             </div>
             <div class="col-sm-9">
-                {% if user.is_authenticated %}
                     <div class="collapse navbar-collapse" id="navbar-1" aria-expanded="false" style="height: 1px">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a href='{% url 'logout' %}'>
-                                    <span class="glyphicon glyphicon-log-out"></span> Log out
+                                <a href='{% url 'home' %}'>
+                                    <span class="glyphicon glyphicon-home"></span> Home page
                                 </a>
                             </li>
+                            {% if user.is_authenticated %}
+                                <li>
+                                    <a href='{% url 'change_password' %}'>
+                                        <span class="glyphicon glyphicon-pencil"></span> Change password
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href='{% url 'logout' %}'>
+                                        <span class="glyphicon glyphicon-log-out"></span> Log out
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <a href='{% url 'home' %}'>
+                                        <span class="glyphicon glyphicon-log-in"></span> Log in
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href='{% url 'register' %}'>
+                                        <span class="glyphicon glyphicon-plus-sign"></span> Register
+                                    </a>
+                                </li>
+                            {% endif %}
                         </ul>
                     </div>
-                {% endif %}
             </div>
         </div>
     </div>

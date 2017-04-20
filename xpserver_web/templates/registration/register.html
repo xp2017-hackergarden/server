@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Login{% endblock %}
+{% block title %}Register{% endblock %}
 
 {% block content %}
 
@@ -9,8 +9,10 @@
             {% csrf_token %}
             <div>
                 <div>
-                    <label for="username">Email: </label>
-                    {{ registration_form.email }}
+                    <div class="form-group">
+                        <label for="username">Email: </label>
+                        {{ registration_form.email }}
+                    </div>
                     <button class="btn btn-default" type="submit">Register</button>
                 </div>
                 {% if registration_form.errors %}
