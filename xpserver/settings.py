@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 import sys
 from configurations import Configuration, values
+from django.contrib.messages import constants as messages
+
 
 
 class Common(Configuration):
@@ -185,6 +187,11 @@ class Common(Configuration):
     PIPELINE['COMPILERS'] = (
         'pipeline.compilers.less.LessCompiler',
     )
+
+    # Adjust message style class to match bootstrap's
+    MESSAGE_TAGS = {
+        messages.ERROR: 'danger'
+    }
 
 
 class Development(Common):
