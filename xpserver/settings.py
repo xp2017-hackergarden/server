@@ -16,6 +16,7 @@ from configurations import Configuration, values
 from django.contrib.messages import constants as messages
 
 
+
 class Common(Configuration):
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     SECRET_KEY = values.SecretValue()
@@ -34,7 +35,20 @@ class Common(Configuration):
         'xpserver_api',
         'xpserver_web',
         'pipeline',
+        'rest_framework',
+        'rest_framework.authtoken',
     ]
+
+    REST_FRAMEWORK = {
+        'DEFAULT_PERMISSION_CLASSES': [
+            'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        ],
+        'DEFAULT_AUTHENTICATION_CLASSES': (
+            'rest_framework.authentication.SessionAuthentication',
+            'rest_framework.authentication.TokenAuthentication',
+
+        )
+    }
 
     MIDDLEWARE_CLASSES = [
         'django.middleware.security.SecurityMiddleware',
@@ -96,7 +110,6 @@ class Common(Configuration):
     import dj_database_url
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES['default'].update(db_from_env)
-
 
     AUTH_PASSWORD_VALIDATORS = [
         {
@@ -181,7 +194,6 @@ class Common(Configuration):
     }
 
 
-
 class Development(Common):
     DEBUG = True
     ALLOWED_HOSTS = []
@@ -202,8 +214,10 @@ class Development(Common):
         }
     }
 
+
 class Staging(Common):
     ALLOWED_HOSTS = ['cclz-xpserver.herokuapp.com']
+
 
 class Production(Staging):
     ALLOWED_HOSTS = ['cclz-xpserver-prod.herokuapp.com']
