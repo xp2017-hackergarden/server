@@ -3,6 +3,7 @@ import sendgrid
 import os
 from sendgrid.helpers.mail import *
 import random
+from django.contrib.auth.models import User
 
 logger = logging.getLogger(__name__)
 
@@ -63,5 +64,8 @@ class EmailSender:
 
 
 def generate_activation_code():
-    # generate random code for activation
     return str(random.getrandbits(64))
+
+
+def username_present(username):
+    return User.objects.filter(username=username).exists()

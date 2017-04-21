@@ -4,10 +4,7 @@ from xpserver_api.permissions import IsCreationOrIsAuthenticated
 from xpserver_api.services import generate_activation_code, EmailSender
 from xpserver_web.models import Profile
 from rest_framework.exceptions import APIException
-
-
-def username_present(username):
-    return User.objects.filter(username=username).exists()
+from xpserver_api.services import username_present
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
