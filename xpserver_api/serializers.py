@@ -6,6 +6,10 @@ from xpserver_web.models import Profile
 from rest_framework.exceptions import APIException
 
 
+def username_present(username):
+    return User.objects.filter(username=username).exists()
+
+
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
@@ -14,15 +18,18 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     def create(self, validated_data):
         email = validated_data['email']
         if email:
-            user = User.objects.create(**validated_data)
-            user.username = email
-            user.is_active = False
-            user.save()
-            profile = Profile.objects.create(user=user, activation_code=generate_activation_code())
-            profile.save()
-            email_sender = EmailSender()
-            email_sender.send_activation_email_with(profile=profile)
-            return user
+            if username_present(email):
+                raise APIException("Email address already registered.")
+            else:
+                user = User.objects.create(**validated_data)
+                user.username = email
+                user.is_active = False
+                user.save()
+                profile = Profile.objects.create(user=user, activation_code=generate_activation_code())
+                profile.save()
+                email_sender = EmailSender()
+                email_sender.send_activation_email_with(profile=profile)
+                return user
         else:
             raise APIException("Enter a valid email address.")
 

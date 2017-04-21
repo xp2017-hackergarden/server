@@ -16,10 +16,6 @@ def main(request):
     return render(request, 'base.html')
 
 
-def username_present(username):
-    return User.objects.filter(username=username).exists()
-
-
 def register(request):
     if request.method == "POST":
         registration_form = RegisterForm(request.POST)
