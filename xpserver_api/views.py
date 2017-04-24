@@ -44,16 +44,25 @@ def response_json_with_status_code(status_code, response):
 
 @api_view(['POST'])
 @permission_classes((permissions.AllowAny,))
-def obtain_token(request):
+def activate_mobile_app(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
+    fcm_registration_id = request.POST.get('fcm_registration_id')
 
     try:
         user = User.objects.get(username=username)
 
         if user.check_password(password):
-            response = str(Token.objects.get(user=user))
-            status_code = 202
+
+            try:
+                profile = Profile.objects.get(user=user)
+                profile.fcm_registration_id = fcm_registration_id
+                profile.save()
+                response = str(Token.objects.get(user=user))
+                status_code = 202
+            except Exception.BaseException:
+                response = "Could not save FCM token"
+                status_code = 404
         else:
             response = "Wrong password"
             status_code = 401
