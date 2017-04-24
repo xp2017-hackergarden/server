@@ -44,7 +44,7 @@ class EmailSender:
             response = sg.client.mail.send.post(request_body=mail.get())
             logger.info("Email created for %s" % profile.user.email)
             return response
-        except BaseException as error:
+        except Exception as error:
             logging.error('An exception occurred: {}'.format(error))
 
     @staticmethod
@@ -71,7 +71,7 @@ class EmailSender:
             response = sg.client.mail.send.post(request_body=mail.get())
             logger.info("Email created for %s" % email)
             return response
-        except BaseException as error:
+        except Exception as error:
             logging.error('An exception occurred: {}'.format(error))
 
 
@@ -94,5 +94,5 @@ class PushNotificationSender:
             }
             push_service.notify_single_device(registration_id=fcm_registration_id, data_message=data_message)
             logger.info('Push notification sent')
-        except BaseException as error:
+        except Exception as error:
             logging.error('An exception occurred: {}'.format(error))
