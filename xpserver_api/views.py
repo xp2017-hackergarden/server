@@ -60,7 +60,7 @@ def activate_mobile_app(request):
                 profile.save()
                 response = str(Token.objects.get(user=user))
                 status_code = 202
-            except Exception.BaseException:
+            except:
                 response = "Could not save FCM token"
                 status_code = 404
         else:
