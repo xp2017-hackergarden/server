@@ -10,5 +10,5 @@ urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^activate_account/$', views.activate_account, name='activate'),
-    url(r'^obtain_token/$', views.obtain_token, name='obtain_token')
+    url(r'^activate_mobile_app/$', views.activate_mobile_app, name='activate_mobile_app')
 ]
