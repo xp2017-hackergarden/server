@@ -21,3 +21,4 @@ newrelic==2.74.0.54
 selenium==3.0.1
 django-pipeline==1.6.12
 djangorestframework==3.6.2
+pyfcm==1.2.9
