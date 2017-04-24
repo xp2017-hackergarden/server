@@ -6,12 +6,12 @@ import random
 from django.contrib.auth.models import User
 from pyfcm import FCMNotification
 
-
 logger = logging.getLogger(__name__)
 
 
 class EmailSender:
-    def send_activation_email_with(self, profile):
+    @staticmethod
+    def send_activation_email_with(profile):
 
         logger.info('Starting to build activation email')
         try:
@@ -47,7 +47,8 @@ class EmailSender:
         except BaseException as error:
             logging.error('An exception occurred: {}'.format(error))
 
-    def send_password_email_for(self, email, password):
+    @staticmethod
+    def send_password_email_for(email, password):
         logger.info('Starting to build password email')
         try:
             web_url = os.environ.get('WEB_URL')
@@ -83,14 +84,15 @@ def username_present(username):
 
 
 class PushNotificationSender:
-    def send_push_notification(self, user_id, message):
+    @staticmethod
+    def send_push_notification(fcm_registration_id, message):
         logger.info('Starting to build push notification')
         try:
             push_service = FCMNotification(api_key=os.environ.get('FIREBASE_API_KEY'))
             data_message = {
                 "message": message
             }
-            push_service.notify_single_device(registration_id=user_id, data_message=data_message)
+            push_service.notify_single_device(registration_id=fcm_registration_id, data_message=data_message)
             logger.info('Push notification sent')
         except BaseException as error:
             logging.error('An exception occurred: {}'.format(error))
