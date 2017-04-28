@@ -9,6 +9,6 @@ class Profile(models.Model):
 
     def __str__(self):
         if self.user:
-            return 'Profile for %s' % self.user.username
+            return '%s - profile.' % self.user.username
         else:
             return 'Profile unknown user'
