@@ -9,6 +9,6 @@ router.register(r'users', UserViewSet)
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^activate_account/$', views.activate_account, name='activate'),
-    url(r'^activate_mobile_app/$', views.activate_mobile_app, name='activate_mobile_app')
+    url(r'^activate-account/$', views.activate_account, name='activate'),
+    url(r'^activate-mobile-app/$', views.activate_mobile_app, name='activate_mobile_app')
 ]
