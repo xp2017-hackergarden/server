@@ -9,6 +9,9 @@ class Profile(models.Model):
 
     def __str__(self):
         if self.user:
-            return '%s - profile.' % self.user.username
+            if self.fcm_registration_id:
+                return '%s - profile with activated mobile app.' % self.user.username
+            else:
+                return '%s - profile.' % self.user.username
         else:
             return 'Profile unknown user'
