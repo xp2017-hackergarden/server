@@ -30,7 +30,7 @@ class EmailSender:
                 If you requested this activation, please click this link to finish the process:
             </p>
             <p>
-                <a href="%sactivate_account?activation_code=%s&user_name=%s" method="get">Activate</a>
+                <a href="%sactivate-account?activation_code=%s&user_name=%s" method="get">Activate</a>
             </p>
             <p>
                 If you feel that you have received this mail in error, contact
