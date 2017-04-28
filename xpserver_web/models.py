@@ -14,4 +14,4 @@ class Profile(models.Model):
             else:
                 return '%s - profile.' % self.user.username
         else:
-            return 'Profile unknown user'
+            return 'Profile with unknown user'
