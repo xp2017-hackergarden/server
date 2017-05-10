@@ -49,5 +49,4 @@ Run application
 $ python manage.py runserver
 ```
 
-##That's it - you are ready to roll
-
+### That's it - you are ready to roll
