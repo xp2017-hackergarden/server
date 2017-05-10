@@ -96,4 +96,15 @@ People can join the test group by joining the
 [XP 2017 Hackergarden Google+](https://plus.google.com/communities/113114317075009069296) community and activating the
 app by opening the [activation link](https://play.google.com/apps/testing/com.xpapp).
 
+# Important resources
+
+## Web
+* [Web app](https://app.xp2017.org)
+
+## Services
+* [CircleCI dashboard](https://circleci.com/gh/xp2017-hackergarden/server)
+
+## Documentation
+* [codecentric labs zero Team page](https://codecentric-labs-zero.github.io/)
+
 ### That's it - you are ready to roll
