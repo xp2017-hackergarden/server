@@ -217,6 +217,8 @@ class Development(Common):
 
 class Staging(Common):
     ALLOWED_HOSTS = ['cclz-xpserver.herokuapp.com', '.xp2017.org']
+    SECURE_SSL_REDIRECT = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 class Production(Staging):
