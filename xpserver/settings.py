@@ -216,8 +216,8 @@ class Development(Common):
 
 
 class Staging(Common):
-    ALLOWED_HOSTS = ['cclz-xpserver.herokuapp.com']
+    ALLOWED_HOSTS = ['cclz-xpserver.herokuapp.com', '.xp2017.org']
 
 
 class Production(Staging):
-    ALLOWED_HOSTS = ['cclz-xpserver-prod.herokuapp.com']
+    ALLOWED_HOSTS = ['cclz-xpserver-prod.herokuapp.com', '.xp2017.org']
