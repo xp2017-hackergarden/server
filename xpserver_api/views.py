@@ -15,7 +15,7 @@ def response_json_with_status_code(status_code, response):
 @api_view(['GET'])
 @permission_classes((permissions.AllowAny,))
 def activate_account(request):
-    response = ''
+    response = "Error occurred"
     activation_code = request.GET.get('activation_code')
     user_name = request.GET.get('user_name')
 
@@ -64,7 +64,7 @@ def activate_mobile_app(request):
                 response = str(Token.objects.get(user=user))
                 status_code = 202
             except:
-                response = "Could not save FCM token"
+                response = "Could not activate the app"
                 status_code = 404
         else:
             response = "Wrong password"
@@ -74,7 +74,7 @@ def activate_mobile_app(request):
         response = "User does not exist"
         status_code = 404
     except Token.DoesNotExist:
-        response = "User does not have a token"
+        response = "Could not activate the app"
         status_code = 404
     finally:
         return response_json_with_status_code(status_code, response)
