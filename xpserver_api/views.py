@@ -49,6 +49,8 @@ def activate_mobile_app(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
     fcm_registration_id = request.POST.get('fcm_registration_id')
+    response = "Error occurred"
+    status_code = 500
 
     try:
         user = User.objects.get(username=username)
